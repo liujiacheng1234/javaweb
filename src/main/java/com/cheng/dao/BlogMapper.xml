@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cheng.dao.BlogMapper">
+    <insert id="addBlog" parameterType="Blog">
+        insert into myblog.blog (title,content,postTime,userId)
+        values (#{title},#{content},#{postTime},#{userId});
+    </insert>
+
+    <delete id="delBlog" parameterType="int">
+        delete from myblog.blog where blogId=#{blogId}
+    </delete>
+
+    <update id="upBlog" parameterType="Blog">
+        update myblog.blog set title=#{title},
+                               content=#{content},
+                               postTime=#{postTime},
+                               userId=#{userId}
+        where blogId=#{blogId}
+    </update>
+
+    <select id="queryBlogById" resultType="Blog">
+        select * from myblog.blog where blogId=#{blogId}
+    </select>
+
+    <select id="queryAllBlog" resultType="Blog">
+        select * from myblog.blog
+    </select>
+</mapper>

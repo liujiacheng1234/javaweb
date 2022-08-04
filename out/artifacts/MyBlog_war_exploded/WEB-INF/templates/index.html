@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/list.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/common.css}">
+</head>
+<body>
+<div class="nav">
+    <span class="title">我的博客系统</span>
+    <a href="home.html">主页</a>
+    <a th:href="@{http://localhost:8080/toAddBlog}">创作</a>
+    <a href="login.html">注销</a>
+</div>
+
+<div class="parent">
+    <div class="left">
+        <div class="card">
+            <img th:src="@{/static/image/toxiang.jpg}">
+            <span class="name">cheng</span>
+            <a href="https://github.com/liujiacheng1234">github 地址</a>
+            <div class='one'>
+                <span>文章</span>
+                <span>分类</span>
+            </div>
+            <div class='one'>
+                <span>2</span>
+                <span>1</span>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="article" th:each="blog : ${blogs}">
+            <h2 class="title" th:text="${blog.title}">我的第一篇博客</h2>
+            <span class="date" th:text="${blog.postTime}">2022-4-17</span>
+            <div class="desc" th:text="${blog.content}">今天开始我要认真写博客</div>
+            <a th:href="@{http://localhost:8080/blogDetail(blogId=${blog.blogId})}" class="more">查看全文&gt;&gt;</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

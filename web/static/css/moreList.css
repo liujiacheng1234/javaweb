@@ -1,0 +1,21 @@
+.article  .title{
+    text-align: center;
+    margin: 10px;
+}
+
+.article .date{
+    display: block;
+    color:green;
+    text-decoration: none;
+    text-align: center;
+    margin: 5px;
+}
+
+.article .desc {
+    text-indent: 2em;
+    margin: 5px;
+}
+
+.article p{
+    margin-top: 15px;
+}

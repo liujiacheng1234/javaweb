@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/static/css/common.css}">
+    <link rel="stylesheet" th:href="@{/static/css/edit.css}">
+    <!-- 引入 editor.md 的依赖 -->
+    <link rel="stylesheet" th:href="@{/static/editor.md-master/css/editormd.min.css}" />
+    <script th:src="@{/static/js/jquery-3.6.0.js}"></script>
+    <script th:src="@{/static/js/jquery.min.js}"></script>
+    <script th:src="@{/static/editor.md-master/lib/marked.min.js}"></script>
+    <script th:src="@{/static/editor.md-master/lib/prettify.min.js}"></script>
+    <script th:src="@{/static/editor.md-master/editormd.js}"></script>
+</head>
+<body>
+<div class="nav">
+    <span class="title">我的博客系统</span>
+    <a href="home.html">主页</a>
+    <a href="edit.html">创作</a>
+    <a href="login.html">注销</a>
+</div>
+<div class="leader">
+    <div class="empOne">
+        <input type="text" class="title" value="在这里写下文章标题">
+        <input type="button" value="发布文章" class="publish">
+    </div>
+    <div id="editor">
+
+    </div>
+</div>
+
+<script>
+    // 初始化编辑器
+    var editor = editormd("editor", {
+        // 这里的尺寸必须在这里设置. 设置样式会被 editormd 自动覆盖掉.
+        width: "100%",
+        // 高度 100% 意思是和父元素一样高. 要在父元素的基础上去掉标题编辑区的高度
+        height: "calc(100% - 60px)",
+        // 编辑器中的初始内容
+        markdown: "# 在这里写下一篇博客",
+        // 指定 editor.md 依赖的插件路径
+        path: "/static/editor.md-master/lib/"
+    });
+    let submit = document.querySelector('.publish');
+    submit.onclick = function() {
+        let title = document.querySelector('.title');
+        let content = document.querySelector('.content');
+        console.log("8",title)
+        if(title.textContent == ""){
+            alert('当前文章标题为空,请输入!');
+            title.focus();
+            return;
+        }
+        if(content.textContent == ""){
+            alert('当前文章内容为空,请输入!');
+            content.focus();
+            return;
+        }
+        console.log("8",title)
+        $.ajax({
+            url: "edit",
+            method: "POST",
+            data: JSON.stringify({title: title.textContent, content: content.textContent}),
+            contentType: "application/json;charset=utf-8",
+            success: function(data,status) {
+                location.assign('home.html');
+            }
+        })
+    }
+</script>
+</body>
+</html>

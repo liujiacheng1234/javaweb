@@ -1,0 +1,39 @@
+.leader{
+    width: 1000px;
+    height: calc(100% - 50px);
+    margin: 0 auto;
+}
+.leader .empOne{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.leader .empOne .title{
+    width: 800px;
+    height: 40px;
+    border-radius: 8px;
+    outline: none;
+    border:1px solid rgba(0,0,0,0.2);
+    padding-left: 5px;
+    background-color: rgba(255,255,255,0.8);
+}
+.leader .empOne .publish {
+    margin: 10px;
+    width: 180px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    color:white;
+    background-color: rgb(255,127,39);
+}
+.leader .empOne .publish:hover{
+    background-color: rgb(255,127,39,0.6);
+}
+.leader .empOne .publish:active{
+    background-color: #fff;
+}
+
+#editor{
+    border-radius: 8px;
+    opacity: 80%;
+}

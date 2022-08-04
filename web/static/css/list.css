@@ -1,0 +1,36 @@
+.article  .title{
+    text-align: center;
+    margin: 10px;
+}
+
+.article .date{
+    display: block;
+    color:green;
+    text-decoration: none;
+    text-align: center;
+    margin: 5px;
+}
+
+.article .desc {
+    text-indent: 2em;
+    margin: 5px;
+}
+
+.article .more{
+    display: block;
+    width: 100px;
+    height: 30px;
+
+    line-height: 30px;
+    text-align: center;
+
+    margin: 0 auto;
+    text-decoration: none;
+    border: 1px solid black;
+    color:black;
+}
+
+.article .more:active{
+    background-color: black;
+    color:white;
+}
